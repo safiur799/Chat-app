@@ -8,6 +8,21 @@ const io = socketio(server);
 const port = 5000;
 const pubicJoinHtmlPage = path.join(__dirname, "../public");
 app.use(express.static(pubicJoinHtmlPage));
+const user = {};
+io.on("connection", (socket) => {
+  socket.emit("messege", "welcome!");
+  socket.on("new-user", (Username) => {
+    user[socket.id] = Username;
+    console.log(Username);
+    socket.broadcast.emit("join", Username);
+  });
+  socket.on("send", (userMessege) => {
+    socket.broadcast.emit("recieve", {
+      messege: userMessege,
+      name: user[socket.id],
+    });
+  });
+});
 
 server.listen(port, () => {
   console.log(`listen to the port ${port}`);
