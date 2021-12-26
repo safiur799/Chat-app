@@ -15,6 +15,12 @@
   align-items: center;
   justify-content: center;
   color: white;
+}
+.wrap_container {
+  display: flex;
+}
+.chat_box_send {
+  display: flex;
   flex-direction: column;
 }
 .chat_box {
@@ -74,5 +80,34 @@
   color: white;
 }
 .send_button:hover {
+  cursor: pointer;
+}
+.left_side {
+  border: 1px solid white;
+  margin-right: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+.chat {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  font-weight: bold;
+}
+.join_chat {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  overflow-y: auto;
+}
+.join_user {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+.join_user:hover {
+  background-color: #161120;
   cursor: pointer;
 }

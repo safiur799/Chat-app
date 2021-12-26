@@ -7,7 +7,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
 
-const port = Process.env.PORT || 5000;
+const port = process.env.PORT || 5000;
 const pubicJoinHtmlPage = path.join(__dirname, "./");
 app.use(express.static(pubicJoinHtmlPage));
 const user = {};
@@ -23,6 +23,10 @@ io.on("connection", (socket) => {
       messege: userMessege,
       name: user[socket.id],
     });
+  });
+  socket.on("disconnect", (message) => {
+    socket.broadcast.emit("left", user[socket.id]);
+    delete user[socket.id];
   });
 });
 

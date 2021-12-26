@@ -16,7 +16,6 @@ const append = (UserName, position, position1) => {
 const Username = prompt("Enter your Name to join the chat");
 socket.emit("new-user", Username);
 socket.on("join", (Username) => {
-  console.log("safi");
   append(`${Username} join the chat`, "left_text", "left_box");
 });
 
@@ -28,4 +27,7 @@ function sendFunction() {
 }
 socket.on("recieve", (mes) => {
   append(`@${mes.name}:${mes.messege}`, "left_text", "left_box");
+});
+socket.on("left", (name) => {
+  append(`@${name} left the chat`, "left_text", "left_box");
 });
