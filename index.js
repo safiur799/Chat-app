@@ -7,7 +7,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
 
-const port = process.env.PORT || 5000;
+const port = Process.env.PORT || 5000;
 const pubicJoinHtmlPage = path.join(__dirname, "./");
 app.use(express.static(pubicJoinHtmlPage));
 const user = {};
